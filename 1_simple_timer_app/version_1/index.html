@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Simple Timer</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <!-- <p id="timer">00:00:00</p>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+     <input type="text" id="fname" name="fname"><br><br> -->
+
+
+
+    <div id="timerApp">
+        <div id="countDownTimer" hidden>
+
+        </div>
+
+        <div id="countDownTimerDetails">
+            <p>Specify a duration in the format hh:mm:ss</p>
+            <!-- <form onsubmit="startTimer()">
+            <input type="text" id="duration" placeholder="00:00:00"><br><br>
+            <input type="submit" value="Start Countdown">
+            </form> -->
+
+            <textarea id="duration"></textarea>
+            <button onclick="startTimer()">Start Countdown</button>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
