@@ -6,12 +6,14 @@ import { fromNodeProviderChain } from "@aws-sdk/credential-providers";
 import * as dotenv from 'dotenv'
 dotenv.config()
 
+var {S3_BUCKET, REGION } = process.env;
+
 // Use the default provider chain
 const credentialProvider = fromNodeProviderChain();
 
 const sigv4 = new SignatureV4({
 	service: 's3',
-	region: process.env.REGION,
+	region: REGION,
 	credentials: credentialProvider,
 	sha256: Sha256,
 });
@@ -19,11 +21,11 @@ const sigv4 = new SignatureV4({
 // Create SignatureV4 request
 const signed = await sigv4.sign({
 	method: 'GET',
-	hostname: `${process.env.S3_BUCKET}.s3.eu-west-1.amazonaws.com`,
+	hostname: `${S3_BUCKET}.s3.eu-west-1.amazonaws.com`,
 	path: '/lorem_ipsum.txt',
 	protocol: 'https:',
 	headers: {
-		host: `${process.env.S3_BUCKET}.s3.eu-west-1.amazonaws.com`
+		host: `${S3_BUCKET}.s3.eu-west-1.amazonaws.com`
 	},
 });
 
